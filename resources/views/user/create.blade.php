@@ -9,7 +9,7 @@
     </div>
 
     <div class="card shadow p-3">
-        <form method="POST" action="{{ route('user.store') }}" class="form" enctype="multipsrt/from-data">
+        <form method="POST" action="{{ route('user.store') }}" class="form" enctype="multipart/from-data">
             @csrf
 
             <div class="row g-3 mb-3">
@@ -65,7 +65,7 @@
                 <div class="col-md-6">
                     <label for="exampleInputEmail1" class="form-label required">Role</label>
 
-                    <select class="form-select" name="role"required>
+                    <select class="form-select select2-default" name="role"required>
                         <option value="">Pilih Role</option>
                         <option value="Superadmin" @selected(old('role') == 'superadmin')>
                             Superadmin
@@ -88,7 +88,7 @@
                 <div class="col-md-6">
                     <label for="exampleInputEmail1" class="form-label ">Avatar (MaxSIze 1Mb)</label>
                     <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="upload"
-                        name="avatar">
+                        name="avatar " accept="image/jpeg,image/png,image/jpg">
                     @error('avatar')
                         <div class="invalid-feedback">
                             {{ $message }}

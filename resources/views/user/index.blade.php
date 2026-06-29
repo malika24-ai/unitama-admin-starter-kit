@@ -35,16 +35,20 @@
                             <td>{{ $user->role }}</td>
 
                             <td class="text-nowrap">
+
+
+                                <button type="button" class="btn btn-info btn-sm btn-detail" data-bs-toggle="modal"
+                                    data-bs-target="#detailModel" data-route="{{ route('user.show', $user) }}">
+                                    <i class='bx bxs-show'></i>
+                                </button>
+
                                 <a class="btn btn-warning btn-sm " href="{{ route('user.edit', $user) }}"
                                     role="button"><i class='bx bx-edit'></i></a>
-                                <form action="{{ route('user.destroy', $user) }}" method="POST" class="d-inline">
-                                    @method('DELETE')
-                                    @csrf
 
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Anda yakin')"><i class='bx bxs-trash'></i></button>
-
-                                </form>
+                                <button type="button" class="btn btn-danger btn-sm btn-delete" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModel" data-route="{{ route('user.destroy', $user) }}">
+                                    <i class='bx bxs-trash'></i>
+                                </button>
 
                             </td>
                         </tr>
@@ -56,9 +60,40 @@
     </div>
 
     @push('modals')
+        <div class="modal fade" id="detailModel" tabindex="-1" aria-labelledby="detailModelLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="detaileModalLabel">Detail {{ $title }}</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-detail">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     @endpush
 
     @push('scripts')
+        <script>
+            $('#data-table').on('click', '.btn-delete', function() {
+                $('#form-delete').attr('action', $(this).data('route'))
+
+            })
+            $('#data-table').on('click', '.btn-detail', function() {
+                let route = $(this).data('route');
+                $.get(route, function(data) {
+                    $('#detailModel .modal-body').html(data);
+
+                });
+
+            });
+        </script>
     @endpush
 
 </x-app>
