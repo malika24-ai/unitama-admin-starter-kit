@@ -15,7 +15,7 @@
 
             <div class="row g-3 mb-3">
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label required">Name</label>
+                    <label for="name" class="form-label required">Name</label>
                     <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
                         name="name" value="{{ old('name', $user->name) }}"required>
                     @error('name')
@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label required">Email</label>
+                    <label for="email" class="form-label required">Email</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                         name="email" value="{{ old('email', $user->email) }}"required>
                     @error('email')
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label">Password</label>
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
                         name="password" value="{{ old('password') }}" minlength="8">
                     @error('password')
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label ">Konfirmasi Password</label>
+                    <label for="konfirmasipasword" class="form-label ">Konfirmasi Password</label>
                     <input type="passwordconfirm" class="form-control @error('passwordconfirm') is-invalid @enderror"
                         id="passwordconfirm" name="passwordconfirm" minlength="8" data-parsley-equalto=#password>
                     @error('passwordconfirm')
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label required">Role</label>
+                    <label for="role" class="form-label required">Role</label>
 
                     <select class="form-select select2-default" name="role"required>
                         <option value="">Pilih Role</option>
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="col-md-6">
-                    <label for="exampleInputEmail1" class="form-label ">Avatar (MaxSIze 1Mb)</label>
+                    <label for="avatar" class="form-label ">Avatar (MaxSIze 1Mb)</label>
                     <input type="file" class="form-control @error('avatar') is-invalid @enderror" id="upload"
                         name="avatar " accept="image/jpeg,image/png,image/jpg">
                     @error('avatar')
